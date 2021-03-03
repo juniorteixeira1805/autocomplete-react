@@ -1,9 +1,10 @@
+  
 import axios from 'axios'
 
 const api = axios.create({
-    //baseURL: 'http://localhost:8080'
-    //baseURL: 'https://sistema-carol-nutri.devorion.repl.co'
-    baseURL: 'https://sistema-carol-nutri-1.devorion.repl.co' // apontador para a area de testes
-})
+    baseURL: "https://jsonplaceholder.typicode.com",
+  });
 
-export default api
+export default api;
+
+//Arquivo para configuração do axios, para consumir as api's

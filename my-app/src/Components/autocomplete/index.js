@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { Hint } from 'react-autocomplete-hint';
-import {toast} from 'react-toastify'
 
 import api from '../../Services/api'
 
@@ -12,14 +11,12 @@ function Autocomplete() {
 
   const getData = async () => {
       try {
-        const res = await api.get(`/user/users?page=${1}`)
+        const res = await api.get("users")
         var hintArray = []
         res.data.map(a => hintArray.push(a.name))
         setHintData(hintArray)
       } catch (error) {
-            let erro = JSON.parse(error.request.response)
             console.log(error)
-            toast.error(erro.error)
       }
   }
 
@@ -29,7 +26,7 @@ function Autocomplete() {
 
   return (
     <div className="App">
-      <h5>Try typing these words</h5>
+      <h5>Digite alguma palavra listada</h5>
       <code>{`[${hintData.toString()}]`}</code>
       <br/>
       <br/>
@@ -39,7 +36,6 @@ function Autocomplete() {
             <Hint options={hintData} allowTabFill>
                 <input value={text} className='input-with-hint' placeholder="Informe o nome do paciente" onChange={e => setText(e.target.value)}/>
             </Hint>
-            <button type="button">Atualizar lista</button>
         </Formulario>
     </div>
   );
